@@ -11,15 +11,15 @@ public class SpringCloudConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
+                .route(r -> r.path("/login", "/signup")
+                        .uri("http://localhost:8083/")
+                        .id("authService"))
+
                 .route(r -> r.path("/employee/**")
-                        .filters(f -> f.addRequestHeader("first-request", "first-request-header")
-                                .addResponseHeader("first-response", "first-response-header"))
                         .uri("http://localhost:8081/")
                         .id("employeeModule"))
 
-                .route(r -> r.path("/consumer/**")
-                        .filters(f -> f.addRequestHeader("second-request", "second-request-header")
-                                .addResponseHeader("second-response", "second-response-header"))
+                .route(r -> r.path("/**")
                         .uri("http://localhost:8082/")
                         .id("consumerModule"))
                 .build();
