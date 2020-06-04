@@ -15,13 +15,13 @@ public class SpringCloudConfig {
                         .uri("http://localhost:8083/")
                         .id("authService"))
 
-                .route(r -> r.path("/employee/**")
+                .route(r -> r.path("/gyms/**", "/offers/**")
                         .uri("http://localhost:8081/")
-                        .id("employeeModule"))
+                        .id("employeeService"))
 
-                .route(r -> r.path("/**")
+                .route(r -> r.path("/users/**")
                         .uri("http://localhost:8082/")
-                        .id("consumerModule"))
+                        .id("employeeConsumer"))
                 .build();
     }
 }
