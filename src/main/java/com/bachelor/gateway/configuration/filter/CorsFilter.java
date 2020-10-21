@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Config> {
+class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.Config> {
 
     public CustomFilter() {
         super(Config.class);
