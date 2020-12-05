@@ -11,7 +11,7 @@ public class SpringCloudConfig {
     @Bean
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(r -> r.path("/login", "/signup")
+                .route(r -> r.path("/login", "/signup", "/my/**", "/remove")
                         .uri("http://localhost:8083/")
                         .id("authService"))
 
